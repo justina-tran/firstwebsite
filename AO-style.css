@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Nunito:ital@1&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+
+body {
+	/**font-family: Josefin;**/
+	font-size: 20px;
+	line-height: 1.5;
+	
+	background-color: #111118;
+	color: #ffffff;
+	margin: 80px auto 48px auto;
+	width: 1200px;
+}
+
+header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav, footer, h1 {
+	font-size: 40px;
+	font-weight: 700;
+  font-family: Josefin Sans;
+  line-height: 1.2;
+}
+
+h2{
+  font-size: 24px;
+	font-weight: 400;
+  font-family: Josefin Sans;
+  line-height: 1.3;
+ 	margin: 0 0 16px 0;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 0 0 32px;
+  transition: color 0.3s;
+}
+
+a:hover, a.selected{ /** hover vs class **/
+  color: #F4BCBB;
+}
+
+section {
+  margin: 80px 0px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /** 12 column grid **/
+  gap:  32px 32px;
+  grid-auto-flow: dense;
+}
+
+section h1{
+  grid-column: 2 / span 10;
+  text-align: center;
+  /**background-color: pink;  this is to check grid-spacing**/
+}
+
+section.project div.artwork{ /**layout **/
+  grid-column: 1 / span 8;
+  text-align: center;
+}
+
+section.project div.description{
+  font-family: Jost;
+  grid-column: 9 / span 4 ;
+}
+
+section.project img{  /**instructions for each individual type within the layout**/
+  max-height: 640px;
+  max-width: 600px;
+}
+
+/**alt-layout **/
+section.project-alt div.artwork{ 
+  grid-column: 5 / span 8;
+}
+
+section.project-alt div.description{
+  grid-column: 1 / span 4 ;
+}
+
+/** about page **/
+section.about div.photo {
+  grid-column: 1 / span 6;
+  text-align: center; 
+}
+
+section.about img{
+  max-width: 600px;
+  max-height: 640px;
+}
+
+section.about div.description{
+  grid-column: 7 / span 6 ;
+}
+
+section.about h1{
+  margin: 0 0 0 0px;
+  text-align: left;
+}
+
+section.about p{
+  margin: 16px 0px;
+}
+
+
+section.contact div.form{
+  grid-column: 4 / span 6 ;
+}
+
+section.contact h1{
+  text-align: left;
+}
+
+/*contact form starts*/
+input, textarea{
+  width: 100%;
+  background-color: #111118;
+  border: 2px solid #ffffff;
+  color: white;
+  padding: 8px 16px;
+}
+
+label{
+  display: block;
+  margin: 16px 0px; /**the default display is in text, so have to change the display to block to see margin changes*/
+  
+}
+
+textarea{
+  height: 300px;
+}
+
+button{
+  background-color: #f4bcbb;
+  border: none; /**by default there is a border**/
+  font-size: 24px;
+  font-family: Josefin Sans;
+  padding: 8px 16px;
+}
+
+input:focus, textarea:focus{ /**change border color when in focus-state**/
+  border: 2px solid #f4bcbb;
+  outline: none; /**default will have blue outline**/
+}
+/*contact form ends*/
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer a{
+  margin: 0 16px 0 16px;
+}
+
+
+
+/**condition using media query**/
+/**code below is used to overwrite code above**/
+/** (..) this is used as a check and {..} is the do something **/
+@media screen and (max-width:1248px) {  /**1120px is when the content breaks since the body width is set to 1200px**/
+  /**However, to account for the 64px margins, the max-width should be 1248px(1120+64+64)**/
+  body{
+    width: auto;
+    margin: 80px 64px 48px 64px;
+    font-size: 18px;
+
+  }
+  
+  h1, nav, footer{
+    font-size: 28px;
+  }
+
+  header img{
+    max-width: 450px;
+  }
+
+  header a{
+    margin: 0px 10px; /**space between nav links**/
+  }
+
+  section.project img, section.about img{
+    max-width: 520px;
+    max-height: 450px;
+  }
+}
+
+@media screen and (max-width:950px){
+  header img{
+    max-width: 400px;
+  }
+}
+@media screen and (max-width: 900px) {
+
+  header{
+    flex-direction: column; /**this is what makes the nav links change to a column down the page**/
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /** 12 column grid **/
+    gap:  28px 28px;
+    grid-auto-flow: dense;
+  }
+  
+  section h1{
+    grid-column: 1 / span 8;
+    text-align: center;
+    /**background-color: pink;  this is to check grid-spacing**/
+  }
+  
+  section.project div.artwork{ /**layout **/
+    grid-column: 1 / span 4;
+    text-align: center;
+  }
+  
+  section.project div.description{
+    font-family: Jost;
+    grid-column: 5 / span 8 ;
+  }
+
+  section.project img, section.about img{
+    max-width: 100%;
+    max-height: 450px;
+  }
+
+  /**alt-layout **/
+section.project-alt div.artwork{ 
+  grid-column: 5 / span 8;
+}
+
+section.project-alt div.description{
+  grid-column: 1 / span 4 ;
+}
+}
+
+@media screen and (max-width:760px) {
+  header a{
+    margin: 8px 0px;
+  }
+  body{
+    margin: 42px 32px 32px 32px;
+  }
+  
+  header img{
+    width: 100%;
+  }
+
+  section{
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px 24px;
+    margin: 64px 0px;
+  }
+  section{
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px 24px;
+    margin: 64px 0px;
+  }
+  section h1, 
+  section.project div.artwork, section.project div.description, 
+  section.about div.photo, section.about div.description,
+  section.contact div.form{
+    grid-column: 1 / span 4;
+  }
+
+  nav{
+    display: flex; /**flexible layout which squeezes the nav links in a row**/
+    flex-direction: column; /**display the nav in a column**/
+    align-items: center; /**align nav to center (y-axis)**/
+    justify-content: center;/**align nav to center (x-axis)**/
+  }
+}
+
+/**the logo, nav links are still breaking with smaller display**/
+@media screen and (max-width:600px) {
+
+  a{
+    font-size: 22px;
+  }
+}
